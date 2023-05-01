@@ -26,13 +26,6 @@ const IndexPage = () => {
     setToken(token)
   }
 
-  const dramaticChange = (token) => {
-    setToken('')
-    setTimeout(() => {
-      onTokenChange(token)
-    }, 500)
-  }
-
   return (
     <>
       <Head>
@@ -108,7 +101,7 @@ and preparing emergency response plans.`,
                 color={'primary'}
                 sx={{ m: 1, textTransform: 'none' }}
                 onClick={() => {
-                  dramaticChange(normalJwt)
+                  onTokenChange(normalJwt)
                 }}
               >
                 jwt
@@ -118,7 +111,7 @@ and preparing emergency response plans.`,
                 color={'primary'}
                 sx={{ m: 1, textTransform: 'none' }}
                 onClick={() => {
-                  dramaticChange(vcLdJwt)
+                  onTokenChange(vcLdJwt)
                 }}
               >
                 vc+ld+jwt
