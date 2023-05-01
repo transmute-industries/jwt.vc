@@ -12,6 +12,15 @@ type EditorProps = {
   value: string
   onChange?: any
 }
+const clearMarkers = (editor) =>{
+  const prevMarkers = editor.session.getMarkers();
+    if (prevMarkers) {
+      const prevMarkersArr = Object.keys(prevMarkers);
+      for (let item of prevMarkersArr) {
+        editor.session.removeMarker(prevMarkers[item].id);
+      }
+    }
+}
 
 const Editor = ({ value, onChange }: EditorProps) => {
   const aceEditor: any = useRef()
@@ -23,6 +32,7 @@ const Editor = ({ value, onChange }: EditorProps) => {
       showPrintMargin: false,
       indentedSoftWrap: false,
     })
+    clearMarkers(editor)
     const [header, payload, signature] = value.split('.');
     editor.session.addMarker(
       new Range(0,value.indexOf(header),0,value.indexOf(payload) -1),
@@ -39,15 +49,6 @@ const Editor = ({ value, onChange }: EditorProps) => {
       `transmute-jwt-signature`,
       'text'
     )
-    const prevMarkers = editor.session.getMarkers();
-    if (prevMarkers) {
-      const prevMarkersArr = Object.keys(prevMarkers);
-      for (let item of prevMarkersArr) {
-        if (!prevMarkers[item].clazz.includes('transmute')){
-          editor.session.removeMarker(prevMarkers[item].id);
-        }
-      }
-    }
   }, [value])
   return (
     <AceEditor

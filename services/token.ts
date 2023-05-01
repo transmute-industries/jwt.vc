@@ -31,7 +31,10 @@ const order = (obj) => {
 
 const transform = async (token: string) => {
   const protectedHeader = await decodeProtectedHeader(token)
-  const payload = await decodeJwt(token)
+  const payload:any = await decodeJwt(token)
+  if (Array.isArray(payload['@context']) && payload['@context'].includes('https://www.w3.org/ns/credentials/v2')){
+    return payload
+  }
   const { iss, nbf, sub } = payload
   const issuer = iri(iss)
   const credentialSubject = {
