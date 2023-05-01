@@ -17,7 +17,7 @@ const IndexPage = () => {
         backgroundBlendMode: 'darken',
       }}
     >
-      <Particles params={transmuteParticles} />
+      <Particles params={transmuteParticles} sx={{}}/>
     </Box>
   )
 }

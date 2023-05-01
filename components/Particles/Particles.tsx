@@ -4,7 +4,7 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 
 
-export default function({params}) {
+export default function({params, sx}) {
     const particlesInit = useCallback(async (engine: Engine) => {
         await loadFull(engine);
     }, []);
@@ -15,6 +15,7 @@ export default function({params}) {
     return (
         <Particles
             id="tsparticles"
+            style={sx}
             init={particlesInit}
             loaded={particlesLoaded}
             options={params}

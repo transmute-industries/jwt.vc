@@ -17,9 +17,28 @@ export default function Document() {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
         <link
-          href="https://fonts.googleapis.com/css?family=Rajdhani:500,700"
+          href="https://fonts.googleapis.com/css?family=Rajdhani:500"
           rel="stylesheet"
         />
+        <style>
+          {`
+.transmute-jwt-header {
+  position: absolute;
+  background-color: red;
+  opacity: 0.5;
+}
+.transmute-jwt-payload {
+  position: absolute;
+  background-color: purple;
+  opacity: 0.5;
+}
+.transmute-jwt-signature {
+  position: absolute;
+  background-color: blue;
+  opacity: 0.5;
+}
+          `}
+        </style>
       </Head>
       <body>
         <Main />

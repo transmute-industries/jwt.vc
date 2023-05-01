@@ -1,20 +1,16 @@
 import { Box, CircularProgress, Typography } from '@mui/material'
 
-export type LoadingProps = {
-  message: string
-}
-
-export default function Loading({message}: LoadingProps) {
+export default function MappingHero({message}) {
   return (
     <Box
       display="flex"
       justifyContent="center"
       alignItems="center"
-      minHeight="60vh"
+      minHeight="256px"
       flexDirection={'column'}
     >
       <CircularProgress sx={{mb: 2}} />
-      <Typography color={'seconary'}>{message}</Typography>
+      <Typography color={'seconary'}>{message || 'Transforming...'}</Typography>
     </Box>
   )
 }
