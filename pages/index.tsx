@@ -90,7 +90,7 @@ and preparing emergency response plans.`,
       </Head>
       <Particles
         params={mappingParams}
-        sx={{ position: 'absolute', zIndex: -1000 }}
+        sx={{}}
       />
       <Grid container spacing={2}>
         <Grid item xs={12}>

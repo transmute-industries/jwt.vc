@@ -15,7 +15,7 @@ export default function({params, sx}) {
     return (
         <Particles
             id="tsparticles"
-            style={sx}
+            style={{...sx}}
             init={particlesInit}
             loaded={particlesLoaded}
             options={params}

@@ -43,13 +43,13 @@ export const theme = createTheme({
   typography: {
     fontFamily: [primaryFont].join(','),
     h1: {
-      fontSize: '4em',
+      fontSize: '4em'
     },
     h2: {
-      fontSize: '3em',
+      fontSize: '3em'
     },
     h3: {
-      fontSize: '2em',
+      fontSize: '2em'
     },
   }
 });

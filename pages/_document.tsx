@@ -22,6 +22,10 @@ export default function Document() {
         />
         <style>
           {`
+#tsparticles{
+  position: fixed;
+  z-index: -1;
+}    
 .transmute-jwt-header {
   position: absolute;
   background-color: red;
