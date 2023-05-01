@@ -16,11 +16,7 @@ const vcLdJwt = `eyJhbGciOiJFUzI1NiIsImlzcyI6ImRpZDpleGFtcGxlOjEyMyIsImtpZCI6IiM
 
 const IndexPage = () => {
   const router = useRouter()
-  const defaultToken =
-    router.asPath.replace('/#', '') === '/'
-      ? normalJwt
-      : router.asPath.replace('/#', '')
-  const [token, setToken] = useState(defaultToken)
+  const [token, setToken] = useState(normalJwt)
 
   const onTokenChange = (token) => {
     setToken(token)
