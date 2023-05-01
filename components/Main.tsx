@@ -11,12 +11,17 @@ import Particles, { mappingParams } from './Particles'
 import { Source } from '@mui/icons-material'
 import examples from '../services/examples'
 
+import { useRouter } from 'next/router'
+
 const { normalJwt, vcLdJwt } = examples
 
 const MainPage = () => {
-  const [token, setToken] = useState(normalJwt)
+  const router = useRouter()
+  const defaultToken = router.asPath.replace('/#', '') === '/' ? normalJwt : router.asPath.replace('/#', '')
+  const [token, setToken] = useState(defaultToken)
   const onTokenChange = (token) => {
     setToken(token)
+    history.pushState({}, '', `#${token}`);
   }
   return (
     <>
