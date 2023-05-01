@@ -19,7 +19,7 @@ const IndexPage = () => {
   }
 
   const dramaticChange = (token) => {
-    setToken('header.payload.signature')
+    setToken('')
     setTimeout(() => {
       setToken(token)
     }, 500)
@@ -126,16 +126,16 @@ and preparing emergency response plans.`,
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <TokenViewer value={token} onChange={onTokenChange} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <DecodedView value={token} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <MappedRepresentation value={token} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <RdfView value={token} />
         </Grid>
       </Grid>

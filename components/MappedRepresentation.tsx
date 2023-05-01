@@ -11,6 +11,7 @@ const Editor = dynamic(() => import('./Editor'), {
 export const MappedRepresentation = ({ value }) => {
   const [credential, setCredential]: any = useState()
   useEffect(() => {
+    if (value.length){
     setCredential(undefined)
     setTimeout(async ()=>{
       try {
@@ -21,6 +22,7 @@ export const MappedRepresentation = ({ value }) => {
         setCredential(undefined)
       }
     }, 5 * 1000)
+  }
   }, [value])
   return (
     <Box sx={{ p: 2 }}>
