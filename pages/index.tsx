@@ -24,7 +24,6 @@ const IndexPage = () => {
 
   const onTokenChange = (token) => {
     setToken(token)
-    router.push(`#` + token)
   }
 
   const dramaticChange = (token) => {
