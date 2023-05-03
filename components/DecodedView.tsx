@@ -45,7 +45,7 @@ export const DecodedView = ({ value }) => {
           </Box>
           <Box sx={{ p: 2 }}>
             <Typography variant="h3" gutterBottom>
-              Payload
+              Claimset
             </Typography>
             <Editor mode={'json'} value={JSON.stringify(payload, null, 2)} />
           </Box>
