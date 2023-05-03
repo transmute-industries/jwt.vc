@@ -59,6 +59,17 @@ const MainPage = () => {
               </Button>
               <Button
                 variant="outlined"
+                color={'primary'}
+                sx={{ m: 1, textTransform: 'none' }}
+                onClick={() => {
+                  window.open('https://github.com/w3c/vc-jwt')
+                }}
+                endIcon={<Source />}
+              >
+                W3C Spec
+              </Button>
+              <Button
+                variant="outlined"
                 color={'secondary'}
                 sx={{ m: 1, textTransform: 'none' }}
                 onClick={() => {
