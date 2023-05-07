@@ -12,7 +12,7 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.10",
-    "@transmute/jsonld-to-cypher": "^0.2.1",
+    "@transmute/jsonld-to-cypher": "^0.2.3",
     "axios": "^1.4.0",
     "jose": "^4.14.4",
     "jsonld": "^8.1.1",

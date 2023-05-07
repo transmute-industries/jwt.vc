@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react'
 import { Typography, Box, Paper } from '@mui/material'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
 import token from '../services/token'
-import { Cypher } from '@transmute/jsonld-to-cypher'
+import { Cypher, documentLoader } from '@transmute/jsonld-to-cypher'
 import { toast } from 'react-toastify'
 import SpriteText from 'three-spritetext'
 
@@ -29,7 +29,7 @@ export const NetworkView = ({ value }) => {
       ;(async () => {
         try {
           const credential = await token.transform(value)
-          const { graph } = await Cypher.fromDocument(credential)
+          const { graph } = await Cypher.fromDocument(credential, {id: ``, documentLoader})
           setGraph(mutateGraph(graph))
         } catch (e) {
           toast.error(e.message)
