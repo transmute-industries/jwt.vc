@@ -23,7 +23,7 @@ export const MappedRepresentation = ({ value }) => {
           toast.error(e.message)
           setNquads('')
         }
-      }, 10 * 1000)
+      }, 0)
     }
     
   }, [value])
@@ -36,8 +36,8 @@ export const MappedRepresentation = ({ value }) => {
       ) : (
         <>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h2" gutterBottom>
-              Resource Description Framework <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
+            <Typography variant="h3" gutterBottom>
+              RDF <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
             </Typography>
             <Editor mode={'markdown'} value={nquads} sx={{height: '512px'}}/>
           </Box>

@@ -21,7 +21,7 @@ export const MappedRepresentation = ({ value }) => {
           console.error(e)
           setCredential(undefined)
         }
-      }, 5 * 1000)
+      }, 0)
     }
   }, [value])
   return (
@@ -33,7 +33,7 @@ export const MappedRepresentation = ({ value }) => {
       ) : (
         <>
           <Box sx={{ p: 2 }}>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h3" gutterBottom>
               Verifiable Credential{' '}
               <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
             </Typography>

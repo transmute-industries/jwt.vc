@@ -86,19 +86,19 @@ const MainPage = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} md={12}>
           <TokenViewer value={token} onChange={onTokenChange} />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} md={12}>
           <DecodedView value={token} />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} md={6}>
           <MappedRepresentation value={token} />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12} md={6}>
           <RdfView value={token} />
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <NetworkView value={token} />
         </Grid>
       </Grid>

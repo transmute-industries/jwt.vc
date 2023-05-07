@@ -47,30 +47,33 @@ export const NetworkView = ({ value }) => {
 
   return (
     <Box sx={{ p: 2 }}>
-      <Typography variant="h2" gutterBottom>
-        Network Visualization <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
-      </Typography>
-      <Paper>
-        <ForceGraph3D
-          height={400}
-          showNavInfo={false}
-          backgroundColor={'#000'}
-          ref={fgRef}
-          graphData={graph}
-          nodeThreeObject={node => {
-            const sprite = new SpriteText(node.id.substring(0, 32) + '...');
-            sprite.color = node.color;
-            sprite.textHeight = 8;
-            return sprite;
-          }}
-          onNodeDragEnd={node => {
-            node.fx = node.x;
-            node.fy = node.y;
-            node.fz = node.z;
-          }}
-          nodeAutoColorBy="labels"
-        />
-      </Paper>
+      <Box sx={{ p: 2 }}>
+        <Typography variant="h3" gutterBottom>
+          Network Visualization{' '}
+          <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
+        </Typography>
+        <Paper>
+          <ForceGraph3D
+            height={600}
+            showNavInfo={false}
+            backgroundColor={'#000'}
+            ref={fgRef}
+            graphData={graph}
+            nodeThreeObject={(node) => {
+              const sprite = new SpriteText(node.id.substring(0, 32) + '...')
+              sprite.color = node.color
+              sprite.textHeight = 8
+              return sprite
+            }}
+            onNodeDragEnd={(node) => {
+              node.fx = node.x
+              node.fy = node.y
+              node.fz = node.z
+            }}
+            nodeAutoColorBy="labels"
+          />
+        </Paper>
+      </Box>
     </Box>
   )
 }

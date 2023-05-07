@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { Typography, Box } from '@mui/material'
+import { Typography, Grid } from '@mui/material'
 import { decodeJwt, decodeProtectedHeader } from 'jose'
 import { useEffect, useState } from 'react'
 import Loading from './Loading'
@@ -24,40 +24,31 @@ export const DecodedView = ({ value }) => {
     })()
   }, [value])
   return (
-    <Box sx={{ p: 2 }}>
+    <Grid container spacing={2} sx={{p: 4}}>
       {!protectedHeader ? (
-        <>
+        <Grid item xs={12}>
           <Loading message={'Waiting for valid JSON Web Token...'} />
-        </>
+        </Grid>
       ) : (
         <>
-          <Typography variant="h2">
-            Decoded <span style={{ fontSize: '0.5em' }}>PREVIEW</span>
-          </Typography>
-          <Box sx={{ p: 2 }}>
+          <Grid item xs={12} sm={12} md={6}>
             <Typography variant="h3" gutterBottom>
-              Header
+              Header <span style={{ fontSize: '0.5em' }}>DECODED</span>
             </Typography>
             <Editor
               mode={'json'}
               value={JSON.stringify(protectedHeader, null, 2)}
             />
-          </Box>
-          <Box sx={{ p: 2 }}>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
             <Typography variant="h3" gutterBottom>
-              Claimset
+              Claimset <span style={{ fontSize: '0.5em' }}>DECODED</span>
             </Typography>
             <Editor mode={'json'} value={JSON.stringify(payload, null, 2)} />
-          </Box>
-          {/* <Box sx={{ p: 2 }}>
-            <Typography variant="h3" gutterBottom>
-              Signature
-            </Typography>
-            <Editor mode={'text'} value={signature} sx={{ height: '32px' }} />
-          </Box> */}
+          </Grid>
         </>
       )}
-    </Box>
+    </Grid>
   )
 }
 
