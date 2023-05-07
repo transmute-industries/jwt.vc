@@ -44,11 +44,13 @@ const transform = async (token: string) => {
   }
   const credential = {
     [`@context`]: context,
+    id: `did:jwt:${token}`,
     type: ['VerifiableCredential'],
     issuer: issuer,
     validFrom: moment.unix(nbf || 0).toISOString(),
     credentialSubject: order(credentialSubject),
   }
+
   return credential
 }
 

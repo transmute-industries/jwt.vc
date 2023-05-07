@@ -6,6 +6,7 @@ import TokenViewer from './TokenViewer'
 import DecodedView from './DecodedView'
 import MappedRepresentation from './MappedRepresentation'
 import RdfView from './RdfView'
+import NetworkView from './NetworkView'
 import Particles, { mappingParams } from './Particles'
 
 import { Source } from '@mui/icons-material'
@@ -17,16 +18,19 @@ const { normalJwt, vcLdJwt } = examples
 
 const MainPage = () => {
   const router = useRouter()
-  const defaultToken = router.asPath.replace('/#', '') === '/' ? normalJwt : router.asPath.replace('/#', '')
+  const defaultToken =
+    router.asPath.replace('/#', '') === '/'
+      ? normalJwt
+      : router.asPath.replace('/#', '')
   const [token, setToken] = useState(defaultToken)
   const onTokenChange = (token) => {
     setToken(token)
-    history.pushState({}, '', `#${token}`);
+    history.pushState({}, '', `#${token}`)
   }
   return (
     <>
       <Particles params={mappingParams} sx={{}} />
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{mb: 4}}>
         <Grid item xs={12}>
           <Box sx={{ textAlign: 'center', mt: 4, p: 4 }}>
             <Typography variant="h1">
@@ -93,6 +97,9 @@ const MainPage = () => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <RdfView value={token} />
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <NetworkView value={token} />
         </Grid>
       </Grid>
     </>

@@ -27,6 +27,8 @@ const darkBackgroundColor = '#2a2d4c';
 const lightBackgroundColor = '#565a7c';
 const successColor = '#48caca';
 
+export const backgroundColor = darken(darkBackgroundColor, 0.4)
+
 export const theme = createTheme({
   palette: {
     mode:'dark',
@@ -37,7 +39,7 @@ export const theme = createTheme({
       main: secondaryColor,
     },
     background: {
-      default: darken(darkBackgroundColor, 0.4)
+      default: backgroundColor
     }
   },
   typography: {

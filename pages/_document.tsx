@@ -22,6 +22,14 @@ export default function Document() {
         />
         <style>
           {`
+.scene-container {
+  display: flex;
+  width: 100% !important;
+}
+.scene-container canvas {
+  display: flex;
+  width: 100% !important;
+}
 #tsparticles{
   position: fixed;
   z-index: -1;
