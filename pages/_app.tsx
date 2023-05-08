@@ -3,6 +3,8 @@ import CustomTheme from '../components/Theme'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import './styles.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
