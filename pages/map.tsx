@@ -10,42 +10,22 @@ import AppPage from '../components/AppPage'
 import SearchBox from '../components/SearchBox'
 
 import issuer from '../services/issuer'
+import Map from '../services/Map'
 
-mapboxgl.accessToken =
-  'pk.eyJ1Ijoib3JpZXN0ZWVsZSIsImEiOiJjbGhld3l6cHMwc2dhM2pwNHVrdDkzemJ0In0.gbjCZCLJvExz2sVvZ6U78w'
-
+mapboxgl.accessToken = Map.accessToken;
+  
 const austinAsPoint = [-97.7437, 30.271129]
-
-const labelFeatures = (features) => {
-  const items = features
-    .map((feat) => {
-      return { ...feat }
-    })
-    .filter((feat) => {
-      return feat.relevance > 0.8
-    })
-  return items
-}
-
-const getPlaceFromOrganization = async (organization: any) => {
-  const { location } = organization
-  const { address } = location
-  const query = `${address.streetAddress} ${address.postalCode} ${address.addressLocality} ${address.addressRegion}`
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-    query,
-  )}.json?access_token=${mapboxgl.accessToken}&types=address&country=${
-    address.addressCountry
-  }`
-  const res = await axios.get(url)
-  return labelFeatures(res.data.features)
-}
 
 const getPlacesForQuery = async (query: string) => {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
     query,
   )}.json?access_token=${mapboxgl.accessToken}`
   const res = await axios.get(url)
-  return labelFeatures(res.data.features)
+  const items = res.data.features
+    .filter((feat) => {
+      return feat.relevance > 0.8
+    })
+  return items
 }
 
 const loadImage = (
@@ -58,46 +38,6 @@ const loadImage = (
       resolve(image)
     })
   })
-}
-
-const placesToFeatureCollection = (places) => {
-  const features = places.map((place) => {
-    return {
-      type: 'Feature',
-      geometry: place.geometry,
-      properties: {
-        title: place.text,
-      },
-    }
-  })
-  return {
-    type: 'geojson',
-    data: {
-      type: 'FeatureCollection',
-      features: features,
-    },
-  }
-}
-
-const addMarkers = async (map, places) => {
-  const points = placesToFeatureCollection(places)
-  if (!map.getSource('points')){
-    map.addSource('points', points)
-    map.addImage('custom-marker', await loadImage(map, '/logo.png'))
-    map.addLayer({
-      id: 'points',
-      type: 'symbol',
-      source: 'points',
-      layout: {
-        'icon-image': 'custom-marker',
-        'text-field': ['get', 'text'],
-        'text-font': ['Rajdhani'],
-        'text-offset': [0, 1.25],
-        'text-anchor': 'top',
-        'icon-size': 0.25,
-      },
-    })
-  }
 }
 
 const IndexPage = () => {
@@ -122,6 +62,7 @@ const IndexPage = () => {
 
   const onQuery = async (query: string) => {
     const items = await getPlacesForQuery(query)
+    console.log(items)
     setPlaces(items)
   }
 
@@ -138,23 +79,37 @@ const IndexPage = () => {
     }
   }
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const token = window.location.hash.replace('#', '')
-      const { payload } = await issuer.verifier.verify({
-        jwt: token,
+  const addMarkers = async (map, credentials) => {
+    if (!map.getSource('points')){
+      const response = await axios.post('/api/credentials/maps/points', {credentials});
+      const points = response.data
+      const places = points.data.features.map((feat)=>{
+        return  {
+          text: feat.organization.name,
+          center: feat.geometry.coordinates
+        }
       })
-      const possibleIssuerPlaces = await getPlaceFromOrganization(
-        payload.issuer,
-      )
-      const possibleSubjectPlaces = await getPlaceFromOrganization(
-        payload.credentialSubject,
-      )
-      const places = [...possibleIssuerPlaces, ...possibleSubjectPlaces]
-      addMarkers(map.current, places)
       setPlaces(places)
-    }, 1 * 100)
-  }, [])
+      map.addSource('points', points)
+      map.addImage('custom-marker', await loadImage(map, '/logo.png'))
+      map.addLayer({
+        id: 'points',
+        type: 'symbol',
+        source: 'points',
+        'paint': {
+          'text-color': "#ffffff",
+        },
+        'layout': {
+          'text-field': ['get', 'name'],
+          'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.8,
+          'text-justify': 'auto',
+          'icon-image': 'custom-marker',
+          'icon-size': 0.1,
+        }
+      })
+    }
+  }
 
   return (
     <AppPage

@@ -16,6 +16,7 @@
     "@transmute/jsonld-to-cypher": "^0.2.3",
     "axios": "^1.4.0",
     "jose": "^4.14.4",
+    "json-pointer": "^0.6.2",
     "jsonld": "^8.1.1",
     "mapbox-gl": "^2.14.1",
     "moment": "^2.29.4",

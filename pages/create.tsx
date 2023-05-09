@@ -21,7 +21,7 @@ const example = `${JSON.stringify(
     type: ['VerifiableCredential'],
     issuer: {
       id: issuer.iss,
-      type: 'Organizatiion',
+      type: 'Organization',
       name: 'Capital Factory',
       location: {
         type: 'Place',
@@ -38,7 +38,7 @@ const example = `${JSON.stringify(
     validFrom: moment().toISOString(),
     credentialSubject: {
       id: issuer.iss,
-      type: 'Organizatiion',
+      type: 'Organization',
       name: 'Los Angeles Harbor Department',
       location: {
         type: 'Place',
@@ -72,7 +72,7 @@ const IndexPage = () => {
       },
       claimset: JSON.parse(credential)
     })
-    router.push(`/map#${vc}`)
+    router.push(`/#${vc}`)
   }
   return (
     <AppPage

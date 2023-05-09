@@ -63,13 +63,13 @@ export default function SearchAppBar({ actions, children }) {
               router.push('/')
             }}
           />
-          <BottomNavigationAction
+          {/* <BottomNavigationAction
             label="Map"
             icon={<MapIcon />}
             onClick={() => {
               router.push('/map')
             }}
-          />
+          /> */}
         </BottomNavigation>
       </Paper>
     </Box>

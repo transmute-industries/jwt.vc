@@ -7,6 +7,7 @@ import DecodedView from './DecodedView'
 import MappedRepresentation from './MappedRepresentation'
 import RdfView from './RdfView'
 import NetworkView from './NetworkView'
+import MapBox from './MapBox'
 import Particles, { mappingParams } from './Particles'
 
 import { Source } from '@mui/icons-material'
@@ -14,7 +15,7 @@ import examples from '../services/examples'
 
 import { useRouter } from 'next/router'
 
-const { normalJwt, vcLdJwt } = examples
+const { normalJwt, vcLdJwt, geoVc } = examples
 
 const MainPage = () => {
   const router = useRouter()
@@ -56,10 +57,20 @@ const MainPage = () => {
                 color={'primary'}
                 sx={{ m: 1, textTransform: 'none' }}
                 onClick={() => {
-                  onTokenChange(vcLdJwt)
+                  onTokenChange(geoVc)
                 }}
               >
                 vc+ld+jwt
+              </Button>
+              <Button
+                variant="contained"
+                color={'primary'}
+                sx={{ m: 1, textTransform: 'none' }}
+                onClick={() => {
+                  onTokenChange(vcLdJwt)
+                }}
+              >
+                {`vc+ld+jwt (with broken context)`}
               </Button>
               <Button
                 variant="outlined"
@@ -100,6 +111,9 @@ const MainPage = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
           <NetworkView value={token} />
+        </Grid>
+        <Grid item xs={12} sm={12} md={12}>
+          <MapBox value={token} sx={{minHeight: '500px'}}/>
         </Grid>
       </Grid>
     </>
