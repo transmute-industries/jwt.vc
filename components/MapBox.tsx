@@ -1,7 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
-
-import axios from 'axios'
 import mapboxgl from 'mapbox-gl'
 
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
@@ -44,10 +42,7 @@ const MapBox = ({ value, sx }) => {
   }, [])
   const addMarkers = async (map, credentials) => {
     if (!map.getSource('points')) {
-      const response = await axios.post('/api/credentials/maps/points', {
-        credentials,
-      })
-      const points = response.data
+      const points = await Map.credentialsToGeoJson(credentials)
       map.addSource('points', points)
       map.addImage('custom-marker', await loadImage(map, '/logo.png'))
       map.addLayer({
