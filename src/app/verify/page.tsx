@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 export default function VerifyPage() {
   const router = useRouter()
   const [credential, setCredential] = React.useState( '')
-  const [claims, setClaims] = React.useState()
+  const [validation, setValidation] = React.useState()
   React.useEffect(()=>{
     const maybeCredential = window.location.hash.split('#').pop() || ''
     if (maybeCredential === ''){
@@ -23,15 +23,15 @@ export default function VerifyPage() {
       })()
     } else {
       (async ()=>{
-        const decoded = await jose.decodeJwt(maybeCredential)
-        setClaims(decoded as any)
+        const v = await passport.check(maybeCredential)
+        setValidation(v)
       })()
     }
   }, [credential, router])
   return (
     <AppPage>
       <>
-        {claims && <JsonViewer  theme={'dark'} rootName={false} value={claims} />}
+        {validation && <JsonViewer  theme={'dark'} rootName={false} value={validation} />}
       </>
     </AppPage>
   );

@@ -1,3 +1,23 @@
 {
-  "id": "did:web:jwt.vc"
+  "id": "did:web:jwt.vc",
+  "verificationMethod": [
+    {
+      "id": "did:web:jwt.vc#key-42",
+      "type": "JsonWebKey",
+      "controller": "did:web:jwt.vc",
+      "publicKeyJwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "alg": "ES256",
+        "x": "V8ctRWc2deLSjfOjqQm7-m33SinduQbKJVgSHFj7ZxQ",
+        "y": "svjg0e-iAe5zElQhfqqagr4-S8k3WWgzz6JDPmRE_bk"
+      }
+    }
+  ],
+  "assertionMethod": [
+    "did:web:jwt.vc#key-42"
+  ],
+  "authenticationMethod": [
+    "did:web:jwt.vc#key-42"
+  ]
 }

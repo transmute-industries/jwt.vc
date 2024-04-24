@@ -79,6 +79,28 @@ export default function ResponsiveDrawer(props: Props) {
             <ListItemText primary={<>Verifiable Credentials <br/> using JOSE</>} />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton href="https://w3c.github.io/vc-json-schema/" target='_blank'>
+            <ListItemIcon>
+              <HistoryEduIcon />
+            </ListItemIcon>
+            <ListItemText primary={<>Verifiable Credentials <br/> JSON Schema Specification</>} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton href="https://www.w3.org/TR/2024/WD-vc-bitstring-status-list-20240420/" target='_blank'>
+            <ListItemIcon>
+              <HistoryEduIcon />
+            </ListItemIcon>
+            <ListItemText primary={<>Bitstring Status List v1.0</>} />
+          </ListItemButton>
+        </ListItem>
+        
+
+        
+
+        
       </List>
     </div>
   );

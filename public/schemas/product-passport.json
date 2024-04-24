@@ -1,0 +1,20 @@
+{
+  "$id": "https://jwt.vc/schemas/product-passport.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProductPassport",
+  "description": "ProductPassport using JsonSchema",
+  "type": "object",
+  "properties": {
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+}
