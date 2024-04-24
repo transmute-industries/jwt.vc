@@ -138,7 +138,7 @@ const verify = async (jwt: string) => {
   const validator = vc.validator({
     resolver: {
       resolve: async ({ id, type, content }: vc.ValidatorContentType) => {
-        console.log({ id, type, content })
+        // console.log({ id, type, content })
         if (id === `${BASE_URL}/schemas/product-passport.json` && type === 'application/schema+json') {
           return {
             type: "application/schema+json",
