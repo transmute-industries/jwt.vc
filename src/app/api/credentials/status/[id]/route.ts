@@ -1,9 +1,7 @@
 
-import { NextApiRequest } from 'next';
-
 import { passport } from '@/services/passport';
 
-export const GET = async (req: NextApiRequest, {params}) => {
+export const GET = async (req: any, {params}) => {
   try {
     const credential = await passport.status({ id : params.id})
     return Response.json(credential, { status: 200, headers: { 
