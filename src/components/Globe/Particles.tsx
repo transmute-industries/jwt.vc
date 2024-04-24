@@ -4,8 +4,18 @@ import * as THREE from 'three'
 import { useMemo, useState, useRef } from 'react'
 import { createPortal, useFrame } from '@react-three/fiber'
 import { useFBO } from '@react-three/drei'
-import './shaders/simulationMaterial'
-import './shaders/dofPointsMaterial'
+import  './shaders/simulationMaterial'
+import  './shaders/dofPointsMaterial'
+
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      simulationMaterial: any;
+      dofPointsMaterial:any
+    }
+  }
+}
 
 export function Particles({ speed, fov, aperture, focus, curl, size = 512, ...props }: any) {
 

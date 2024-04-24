@@ -6,23 +6,28 @@ import * as React from 'react';
 import AppPage from '../../components/AppPage'
 import { passport } from '@/services/passport';
 import { JsonViewer } from '@textea/json-viewer'
+
+import { useRouter } from 'next/navigation';
+
 export default function VerifyPage() {
-  const [credential, setCredential] = React.useState(window.location.hash.split('#').pop() || '')
+  const router = useRouter()
+  const [credential, setCredential] = React.useState( '')
   const [claims, setClaims] = React.useState()
   React.useEffect(()=>{
-    if (credential === ''){
+    const maybeCredential = window.location.hash.split('#').pop() || ''
+    if (maybeCredential === ''){
       (async ()=>{
         const c = await passport.get()
-        window.location.hash = '#' + c
+        router.push( '#' + c)
         setCredential(c)
       })()
     } else {
       (async ()=>{
-        const decoded = await jose.decodeJwt(credential)
+        const decoded = await jose.decodeJwt(maybeCredential)
         setClaims(decoded as any)
       })()
     }
-  }, [credential])
+  }, [credential, router])
   return (
     <AppPage>
       <>

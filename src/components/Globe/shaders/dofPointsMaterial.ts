@@ -43,3 +43,4 @@ class DofPointsMaterial extends THREE.ShaderMaterial {
 }
 
 extend({ DofPointsMaterial })
+
