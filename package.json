@@ -1,0 +1,36 @@
+{
+  "name": "jwt.vc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@react-three/drei": "^9.105.3",
+    "@react-three/fiber": "^8.16.1",
+    "@textea/json-viewer": "^3.4.1",
+    "@types/three": "^0.163.0",
+    "jose": "^5.2.4",
+    "leva": "^0.9.35",
+    "moment": "^2.30.1",
+    "next": "14.2.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "three": "^0.163.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.2",
+    "typescript": "^5"
+  }
+}
