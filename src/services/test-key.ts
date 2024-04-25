@@ -12,4 +12,6 @@ const testPrivateKey = {
 
 const { d, ...testPublicKey } = testPrivateKey
 
+// the correct thumbprint
+// 1235335bd15b2c75f3e84f4c681d85cbc059c00d7910d1bad0690a2af566aaf8
 export const key = { publicKeyJwk: testPublicKey, privateKeyJwk: testPrivateKey }

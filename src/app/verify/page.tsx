@@ -1,13 +1,13 @@
 'use client'
 
-import * as jose from 'jose'
 import * as React from 'react';
 
 import AppPage from '../../components/AppPage'
 import { passport } from '@/services/passport';
-import { JsonViewer } from '@textea/json-viewer'
 
 import { useRouter } from 'next/navigation';
+
+import PassportVerified from '@/components/PassportVerified';
 
 export default function VerifyPage() {
   const router = useRouter()
@@ -31,7 +31,8 @@ export default function VerifyPage() {
   return (
     <AppPage>
       <>
-        {validation && <JsonViewer  theme={'dark'} rootName={false} value={validation} />}
+     
+        {validation && <PassportVerified validation={validation} />}
       </>
     </AppPage>
   );
