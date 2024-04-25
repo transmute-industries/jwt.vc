@@ -7,8 +7,8 @@ import Theme from "@/components/Theme";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Value Network Verifiable Credentials",
-  description: "JSON Web Token based Verifiable Credentials",
+  title: "Digitial Passport",
+  description: "JSON Web Token based Verifiable Credentials, with JKT TLSA Records for Issuers.",
 };
 
 export default function RootLayout({
