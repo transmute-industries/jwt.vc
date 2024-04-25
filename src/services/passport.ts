@@ -50,13 +50,16 @@ const controller = async () => {
   const issuerWebsite = issuer.replace('did:web:', 'https://')
   const issuerUrl = new URL(issuerWebsite)
   const publicKeyThumbprint = await jose.calculateJwkThumbprint(key.publicKeyJwk)
-  // const thumbprintHex = Buffer.from(jose.base64url.decode(publicKeyThumbprint)).toString('hex')
-  // // console.log(thumbprintHex)
+  const thumbprintHex = Buffer.from(jose.base64url.decode(publicKeyThumbprint)).toString('hex')
   const assurance = await getDidWebAssurance(issuerUrl.hostname)
+  
   key.publicKeyJwk = {
     kid: publicKeyThumbprint,
     ...key.publicKeyJwk 
   } as any
+
+  assurance.jkt = thumbprintHex
+  
   return {
     id: issuer,
     alsoKnownAs: [issuerWebsite],
@@ -247,6 +250,8 @@ const verifyController = async ({id}: any) => {
   const verificationKeyThumbprint = await jose.calculateJwkThumbprint(verificationKey)
   const checks = {
     TLSA: {
+      want: verificationKeyThumbprint,
+      got: assurance.jkt,
       verified: verificationKeyThumbprint === assurance.jkt
     }
   }
