@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "JSON Web Token based Verifiable Credentials, with JKT TLSA Records for Issuers.",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
