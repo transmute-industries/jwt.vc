@@ -104,8 +104,8 @@ export default function PassportCard({ validation, json }: any) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Box sx={{p:1}}>
-              <QRCode value="https://jwt.vc/417/1200144791171" />
-              {/* <Image src="/ai-qr-passport.png" alt={"passport qr code"} width={256} height={256}/> */}
+              {/* <QRCode value="https://jwt.vc/417/1200144791171" /> */}
+              <Image src="/gln.qr.ai.png" alt={"passport qr code"} width={256} height={256}/>
             </Box>
           
           </Grid>
