@@ -22,7 +22,7 @@ export default function Home() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => { router.push('/verify') }}
+            onClick={() => { router.push('/417/1200144791171') }}
             endIcon={<VerifiedIcon />}>
             Fast Lane Access
           </Button>

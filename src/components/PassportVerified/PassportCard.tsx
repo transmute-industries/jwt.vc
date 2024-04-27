@@ -7,12 +7,14 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import { Fingerprint, AutoDelete, SafetyCheck, Draw, ExitToApp, Verified, FactCheck, Google, Dns, KeyOff, Key, Flaky } from '@mui/icons-material';
+import { Fingerprint, AutoDelete, SafetyCheck, Draw, ExitToApp, Verified, FactCheck, Google, Dns, KeyOff, Key, Flaky, TravelExplore } from '@mui/icons-material';
 import moment from 'moment';
 import { Grid, IconButton, Paper, Typography, Button, LinearProgress, Chip } from '@mui/material';
 
 
 import { passport } from '@/services/passport';
+import Image from 'next/image';
+import QRCode from "react-qr-code";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -79,13 +81,34 @@ export default function PassportCard({ validation, json }: any) {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="digital passport tabs">
-          <Tab label="Product" {...a11yProps(0)} />
+          <Tab label="Subject" {...a11yProps(0)} />
           <Tab label="Issuer" {...a11yProps(1)} />
           <Tab label="Validation" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-passport-issuer">Global Location Number</InputLabel>
+              <FilledInput
+                id="filled-passport-issuer"
+                value={validation.content.credentialSubject.gln}
+                endAdornment={<InputAdornment position="end">
+                  <IconButton aria-label="review subject global location number" color="secondary" href={validation.content.credentialSubject.gln} target='_blank'>
+                  <TravelExplore />
+                    </IconButton>
+                  </InputAdornment>}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box sx={{p:1}}>
+              <QRCode value="https://jwt.vc/417/1200144791171" />
+              {/* <Image src="/ai-qr-passport.png" alt={"passport qr code"} width={256} height={256}/> */}
+            </Box>
+          
+          </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-passport-identity">Subject</InputLabel>
@@ -107,6 +130,7 @@ export default function PassportCard({ validation, json }: any) {
               />
             </FormControl>
           </Grid>
+          
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>

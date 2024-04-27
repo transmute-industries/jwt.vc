@@ -118,7 +118,8 @@ const create = async ({ id }: { id: string }) => {
     }],
     "cnf": { jwk: key.publicKeyJwk },
     "credentialSubject": {
-      "id": "did:example:123",
+      "id": issuer,
+      "gln": "https://id.gs1.org/417/1200144791171"
     }
   })
 }
