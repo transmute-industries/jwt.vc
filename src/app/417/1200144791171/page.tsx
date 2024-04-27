@@ -1,22 +1,37 @@
 
+import type { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Transmute GLN Passport",
+  description: "The Global Location Number (GLN) provides businesses the ability to know who is involved in transactions and where things are located throughout the supply chain.",
+  openGraph: {
+    title: "Transmute GLN Passport",
+    description: "The Global Location Number (GLN) provides businesses the ability to know who is involved in transactions and where things are located throughout the supply chain.",
+    url: "https://jwt.vc/417/1200144791171",
+    images: [
+      {
+        url: "https://jwt.vc/ai-qr-passport.png"
+      }
+    ]
+  },
+  twitter: {
+    title: "Transmute GLN Passport",
+    description: "The Global Location Number (GLN) provides businesses the ability to know who is involved in transactions and where things are located throughout the supply chain.",
+    card: "summary_large_image",
+    images: [
+      {
+        url: "https://jwt.vc/ai-qr-passport.png"
+      }
+    ]
+  }
+  
+};
+
 import Demo from "@/components/Demo"
-import Head from "next/head";
 export default function VerifyPage() {
- 
   return (
     <>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta property="og:title" content="Transmute GLN Passport" />
-        <meta property="og:description" content="The Global Location Number (GLN) provides businesses the ability to know who is involved in transactions and where things are located throughout the supply chain." />
-        <meta property="og:image" content="https://jwt.vc/ai-qr-passport.png"/>
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:domain" content={'jwt.vc'} />
-        <meta name="twitter:url" content={'https://jwt.vc/417/1200144791171'} />
-        <meta name="twitter:title" content={"Transmute GLN Passport"} />
-        <meta name="twitter:description" content={"The Global Location Number (GLN) provides businesses the ability to know who is involved in transactions and where things are located throughout the supply chain."} />
-        <meta name="twitter:image" content={"https://jwt.vc/ai-qr-passport.png"} />
-      </Head>
       <Demo/>
     </>
 
