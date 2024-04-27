@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 
+import Demo from "@/components/Demo"
 
 export const metadata: Metadata = {
   title: "Transmute GLN Passport",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   
 };
 
-import Demo from "@/components/Demo"
+
 export default function VerifyPage() {
   return (
     <>
